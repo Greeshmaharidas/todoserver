@@ -21,6 +21,25 @@ app.get('/',function(req,res){
     ]
     res.send(JSON.stringify(todos));
 })
+
+app.get('/',function(req,res){
+    const todos =todo.getTodo();
+    res.json(todos);
+
+})
+app.get('/add',function(req,res){
+    const todos =todo.addTodo();
+    res.json(todos);
+})
+app.get('/delete',function(req,res){
+    console.log(req.query.id,"id");
+
+    const todos =todo.deleteTodo(req.query.id);
+    res.json(todos);
+})
+
+
+    
 app.listen(port, function() {
     console.log(`example app listening on port ${port}!`)
 }
